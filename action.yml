@@ -16,10 +16,7 @@ runs:
   steps:
     - shell: bash
       run: |
-        OUTPUT_FILE=~/.synapseConfig
-        cat > "$OUTPUT_FILE" << EOM
-        [authentication]
-        username = ${{ inputs.username }}
-        apikey = ${{ inputs.apikey }}
-        EOM
-        chmod +x "$OUTPUT_FILE"
+        printf "%s\n" \
+          "[authentication]" \
+          'username="${{ secrets.SYNAPSE_USERNAME }}"' \
+          'apikey="${{ secrets.SYNAPSE_API_KEY }}"' | tee -a ~/.synapseConfig >/dev/null
