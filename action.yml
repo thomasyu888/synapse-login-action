@@ -1,0 +1,16 @@
+name: "Synapse Login"
+
+description: "Log into Synapse"
+
+inputs:
+  username:
+    description: "Synapse username"
+    required: true
+
+  apikey:
+    description: "Synapse apikey"
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
