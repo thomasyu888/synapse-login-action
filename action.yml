@@ -12,5 +12,14 @@ inputs:
     required: true
 
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: "composite"
+  steps:
+    - name: Set Synapse credentials
+      run: |
+        OUTPUT_FILE=~/.synapseConfig
+        cat > "$OUTPUT_FILE" << EOM
+        [authentication]
+        username = ${{ inputs.username }}
+        apikey = ${{ inputs.apikey }}
+        EOM
+        chmod +x "$OUTPUT_FILE"
