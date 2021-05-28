@@ -26,3 +26,12 @@ jobs:
       with:
         username: ${{ secrets.SYNAPSE_USERNAME }}
         pat: ${{ secrets.SYNAPSE_PAT }}
+
+  test_login:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: synapse PAT login
+      uses: ./
+      with:
+        username: ${{ secrets.SYNAPSE_USERNAME }}
