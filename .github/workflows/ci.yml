@@ -18,7 +18,6 @@ jobs:
 
   apikey_login:
     runs-on: ubuntu-20.04
-    needs: test_login
     if: ${{ failure() }}
     steps:
     - uses: actions/checkout@v2
