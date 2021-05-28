@@ -5,8 +5,9 @@ import synapseclient
 username = os.getenv("INPUT_USERNAME")
 apikey = os.getenv("INPUT_APIKEY")
 pat = os.getenv("INPUT_PAT")
+print(pat)
 
-if apikey is None and pat is None:
+if apikey == '' and pat is '':
     raise ValueError("Must specify pat or apikey")
 
 if pat is not None:
