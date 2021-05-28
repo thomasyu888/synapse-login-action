@@ -1,5 +1,7 @@
 name: "Synapse Login"
-
+branding:
+  icon: 'log-in'
+  color: 'blue'
 description: "Log into Synapse"
 
 inputs:
