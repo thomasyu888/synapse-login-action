@@ -11,7 +11,11 @@ inputs:
 
   apikey:
     description: "Synapse apikey"
-    required: true
+    required: false
+
+  pat:
+    description: "Synapse personal access token"
+    required: false
 
 runs:
   using: "docker"

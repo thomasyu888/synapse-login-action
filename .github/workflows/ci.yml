@@ -1,0 +1,19 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  apikey_login:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    # log into Synapse
+    - name: synapse api login
+      uses: ./
+      with:
+        username: ${{ secrets.SYNAPSE_USERNAME }}
+        apikey: ${{ secrets.SYNAPSE_APIKEY }}
