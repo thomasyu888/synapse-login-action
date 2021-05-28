@@ -7,8 +7,19 @@ on:
 
 jobs:
 
+  fail_login:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: synapse PAT login
+      uses: ./
+      with:
+        username: ${{ secrets.SYNAPSE_USERNAME }}
+
   apikey_login:
     runs-on: ubuntu-20.04
+    needs: test_login
+    if: ${{ failure() }}
     steps:
     - uses: actions/checkout@v2
     - name: synapse api login
@@ -26,12 +37,3 @@ jobs:
       with:
         username: ${{ secrets.SYNAPSE_USERNAME }}
         pat: ${{ secrets.SYNAPSE_PAT }}
-
-  test_login:
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-    - name: synapse PAT login
-      uses: ./
-      with:
-        username: ${{ secrets.SYNAPSE_USERNAME }}
