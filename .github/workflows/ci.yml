@@ -9,6 +9,7 @@ jobs:
 
   fail_login:
     runs-on: ubuntu-20.04
+    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
     - name: synapse PAT login
@@ -18,8 +19,6 @@ jobs:
 
   apikey_login:
     runs-on: ubuntu-20.04
-    needs: fail_login
-    if: ${{ failure() }}
     steps:
     - uses: actions/checkout@v2
     - name: synapse api login
